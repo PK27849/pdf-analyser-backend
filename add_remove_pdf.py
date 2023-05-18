@@ -2,7 +2,12 @@ import os
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 relative_path = os.path.join(current_dir, "search_pdf_api/pdf_temp_storage")
-os.makedirs(relative_path, exist_ok=True)
+
+current_dir = os.getcwd()
+relative_path = os.path.join(current_dir, "search_pdf_api/pdf_temp_storage")
+
+if not os.path.exists(relative_path):
+    os.makedirs(relative_path)
 
 async def save_pdf(file):
     target_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pdf_temp_storage")
